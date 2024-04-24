@@ -6,6 +6,7 @@ const router = require('./routes/coffee.route');
 const userRouter = require('./routes/user.route');
 const addProductRouter = require('./routes/addProduct.route');
 
+
 const corsConfig = {
   origin: "*",
   credential: true,

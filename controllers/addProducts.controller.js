@@ -1,4 +1,5 @@
-const AddProduct = require("../models/addproduct.model");
+const DataProduct = require("../models/addProduct.model");
+
 
 
 
@@ -6,7 +7,7 @@ const AddProduct = require("../models/addproduct.model");
 const newProduct = async (req, res) => {
   try {
     const body = req.body;
-    const result = await AddProduct.create(body)
+    const result = await DataProduct.create(body)
     res.status(201).json(result)
   }
   catch (err) {
@@ -18,7 +19,7 @@ const newProduct = async (req, res) => {
 
 const getAllProducts = async (req, res) => {
   try {
-    const result = await AddProduct.find()
+    const result = await DataProduct.find()
     console.log('Product data fetched successfully:', result)
     res.status(200).json(result)
   }
@@ -31,7 +32,7 @@ const getAllProducts = async (req, res) => {
 
 const getSingleProduct = async (req, res) => {
   try {
-    const result = await AddProduct.findById(req.params.id)
+    const result = await DataProduct.findById(req.params.id)
     console.log('Product data fetched successfully:', result)
     res.status(200).json(result)
   }
@@ -46,7 +47,7 @@ const updateProduct = async (req, res) => {
   try {
     const body = req.body;
     const { id } = req.params;
-    const result = await AddProduct.findByIdAndUpdate({_id: id}, body, {new: true, runValidators: true })
+    const result = await DataProduct.findByIdAndUpdate({_id: id}, body, {new: true, runValidators: true })
     console.log('Product data updated successfully:', result)
     res.status(200).json(result)
   }
@@ -60,7 +61,7 @@ const updateProduct = async (req, res) => {
 const deleteProduct = async (req, res) => {
   try {
     const { id } = req.params;
-    const result = await AddProduct.findByIdAndDelete({_id: id})
+    const result = await DataProduct.findByIdAndDelete({_id: id})
     console.log('Product data deleted successfully:', result)
     res.status(200).json(result)
   }
