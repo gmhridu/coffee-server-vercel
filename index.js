@@ -6,16 +6,19 @@ const router = require('./routes/coffee.route');
 const userRouter = require('./routes/user.route');
 const addProductRouter = require('./routes/addProduct.route');
 
+const corsConfig = {
+  origin: "*",
+  credential: true,
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+}
+
 dotenv.config();
 const port = process.env.PORT || 3000;
 const mongoUri = process.env.MONGODB_URI;
 
 const app = express();
-app.use(cors({
-  origin: ["https://coffee-storess-server.vercel.app"],
-  methods: ["POST", "GET", "DELETE", "PUT", "OPTIONS"],
-  credentials: true
-}));
+app.options("", cors(corsConfig))
+app.use(cors(corsConfig));
 app.use(express.json());
 
 ConnectDB(mongoUri);
