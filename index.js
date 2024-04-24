@@ -36,3 +36,9 @@ app.use('*', (req, res) => {
 app.listen(port, () => {
   console.log(`SIMPLE CRUD IS RUNNING ON PORT ${port}`);
 });
+
+process.on("unhandledRejection", (error, promise) => {
+  console.log(`Error: ${error.message}`);
+  // Close server & exit process
+  server.close(() => process.exit(1));
+});

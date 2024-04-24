@@ -1,7 +1,7 @@
 const express = require('express');
 const addProductRouter = express.Router();
-const { newProduct, getAllProducts, getSingleProduct, updateProduct } = require('../controllers/addProducts.controller');
-const { deleteACoffee } = require('../controllers/coffee.controller');
+const { newProduct, getAllProducts, getSingleProduct, updateProduct, deleteProduct } = require('../controllers/addProducts.controller');
+
 
 
 
@@ -18,7 +18,7 @@ addProductRouter.get('/:id', getSingleProduct);
 addProductRouter.put('/:id', updateProduct);
 
 // delete a product
-addProductRouter.delete("/:id", deleteACoffee);
+addProductRouter.delete("/:id", deleteProduct);
 
 
 module.exports = addProductRouter;
